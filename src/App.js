@@ -1,24 +1,29 @@
-import logo from './platzi.webp';
-import './App.css';
+import "./App.css";
+import CreateTodoButton from "./components/CreateTodoButton";
+import TodoCounter from "./components/TodoCounter";
+import TodoItem from "./components/TodoItem";
+import TodoList from "./components/TodoList";
+import TodoSearch from "./components/TodoSearch";
+
+const defaultTodo = [
+  { text: "cortar cebolla", complete: true },
+  { text: "tomar el curso de react", complete: false },
+  { text: "llorar con la llorona", complete: false },
+  { text: "lalalalala", complete: false },
+];
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edita el archivo <code>src/App.js</code> y guarda para recargar.
-        </p>
-        <a
-          className="App-link"
-          href="https://platzi.com/reactjs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <TodoCounter completed={15} total={25} />
+      <TodoSearch />
+      <TodoList>
+        {defaultTodo.map((e) => (
+          <TodoItem key={e.text} text={e.text} completed={e.complete} />
+        ))}
+      </TodoList>
+      <CreateTodoButton />
+    </>
   );
 }
 
