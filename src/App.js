@@ -14,16 +14,21 @@ const defaultTodo = [
 ];
 
 function App() {
-  const [todo, setTodo] = useState(defaultTodo);
+  const [todos, setTodos] = useState(defaultTodo);
   const [searchValue, setSearchValue] = useState("");
-  const completeTodos = todo.filter((todo) => !!todo.complete).length;
-  const totatTodos = todo.length;
+  const completeTodos = todos.filter((todo) => !!todo.complete).length;
+  const totatTodos = todos.length;
+  const searchTodos = todos.filter((todo) => {
+    const todoText = todo.text.toLowerCase();
+    const searchText = searchValue.toLowerCase();
+    return todoText.includes(searchText);
+  });
   return (
     <>
       <TodoCounter completed={completeTodos} total={totatTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
-        {defaultTodo.map((e) => (
+        {searchTodos.map((e) => (
           <TodoItem key={e.text} text={e.text} completed={e.complete} />
         ))}
       </TodoList>
