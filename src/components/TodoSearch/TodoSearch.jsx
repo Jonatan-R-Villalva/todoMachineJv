@@ -5,7 +5,7 @@ export default function TodoSearch({searchValue,setSearchValue}) {
   return (
     <input 
     className='TodoSearch'
-    placeholder='cortar cebolla'
+    placeholder='Busca una tarea'
     value={searchValue}
     onChange={(e)=>{
       setSearchValue(e.target.value)
