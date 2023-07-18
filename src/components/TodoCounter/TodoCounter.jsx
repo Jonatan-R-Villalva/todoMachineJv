@@ -9,7 +9,7 @@ export default function TodoCounter() {
       <h1 className='todoCounter'>Felicidades!!! Has completado todas las tareas</h1>
     )}else{
       return (
-        <h1 className='todoCounter'>Has completado <span>{completeTodos}</span> de <span>{totalTodos}</span> TODOS</h1>
+        <h1 className='todoCounter'>Has completado <span>{completeTodos}</span> de <span>{totalTodos}</span> TAREAS</h1>
       )
   }
 }

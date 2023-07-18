@@ -8,7 +8,8 @@ import TodoList from "../components/TodoList/TodoList";
 import TodoSearch from "../components/TodoSearch/TodoSearch";
 import TodosError from "../components/TodosError/TodosError";
 import TodosLoading from "../components/TodosLoading/TodosLoading";
-import Modal from "../Modal/Modal";
+import Modal from "../components/Modal/Modal";
+import Form from "../components/Form/Form";
 
 export default function AppUi() {
   const {
@@ -39,7 +40,11 @@ export default function AppUi() {
         ))}
       </TodoList>
       <CreateTodoButton />
-      {openModal && <Modal>hola</Modal>}
+      {openModal && (
+        <Modal>
+          <Form />
+        </Modal>
+      )}
     </>
   );
 }
