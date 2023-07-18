@@ -11,6 +11,7 @@ export function ContextProvider({ children }) {
     error,
   } = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(true);
   const completeTodos = todos.filter((todo) => !!todo.complete).length;
   const totalTodos = todos.length;
   const searchTodos = todos.filter((todo) => {
@@ -43,6 +44,8 @@ export function ContextProvider({ children }) {
         deleteTodo,
         loading,
         error,
+        openModal,
+        setOpenModal,
       }}
     >
       {children}
