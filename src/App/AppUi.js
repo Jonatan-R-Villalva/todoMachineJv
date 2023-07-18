@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { Context } from "../Context/Context";
 import CreateTodoButton from "../components/CreateTodoButton/CreateTodoButton";
 import EmptyTodos from "../components/EmptyTodos/EmptyTodos";
 import TodoCounter from "../components/TodoCounter/TodoCounter";
@@ -6,21 +8,14 @@ import TodoList from "../components/TodoList/TodoList";
 import TodoSearch from "../components/TodoSearch/TodoSearch";
 import TodosError from "../components/TodosError/TodosError";
 import TodosLoading from "../components/TodosLoading/TodosLoading";
-export default function AppUi({
-  completeTodos,
-  totalTodos,
-  searchValue,
-  setSearchValue,
-  searchTodos,
-  completedTodos,
-  deleteTodo,
-  loading,
-  error,
-}) {
+
+export default function AppUi() {
+  const { searchTodos, completedTodos, deleteTodo, loading, error } =
+    useContext(Context);
   return (
     <>
-      <TodoCounter completed={completeTodos} total={totalTodos} />
-      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      <TodoCounter />
+      <TodoSearch />
       <TodoList>
         {loading && <TodosLoading />}
         {error && <TodosError />}

@@ -22,7 +22,7 @@ export const useLocalStorage = (itemName, initialValue) => {
         setError(error);
       }
     }, 2000);
-  }, []);
+  }, [initialValue, itemName]);
 
   const saveItem = (newItems) => {
     localStorage.setItem(itemName, JSON.stringify(newItems));
