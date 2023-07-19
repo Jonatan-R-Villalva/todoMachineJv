@@ -11,7 +11,7 @@ export function ContextProvider({ children }) {
     error,
   } = useLocalStorage("TODOS_V1", []);
   const [searchValue, setSearchValue] = useState("");
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
   const completeTodos = todos.filter((todo) => !!todo.complete).length;
   const totalTodos = todos.length;
   const searchTodos = todos.filter((todo) => {
@@ -19,6 +19,15 @@ export function ContextProvider({ children }) {
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText);
   });
+
+  const addTodo = (text) => {
+    const newTodos = [...todos];
+    newTodos.push({
+      text,
+      complete: false,
+    });
+    saveTodos(newTodos);
+  };
 
   const completedTodos = (text) => {
     const newTodos = [...todos];
@@ -32,6 +41,7 @@ export function ContextProvider({ children }) {
     newTodos.splice(todoIndex, 1);
     saveTodos(newTodos);
   };
+
   return (
     <Context.Provider
       value={{
@@ -46,6 +56,7 @@ export function ContextProvider({ children }) {
         error,
         openModal,
         setOpenModal,
+        addTodo,
       }}
     >
       {children}
